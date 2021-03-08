@@ -27,7 +27,7 @@ Create an application called Note Taker that can be used to write and save notes
   `http://localhost:3000/`
 
 * A live demo is available on the link below:
-    * [Live Heroku App]("https://note-taker-utility.herokuapp.com/")
+    * [Live Heroku App](https://note-taker-utility.herokuapp.com/)
 
 
 ## License
