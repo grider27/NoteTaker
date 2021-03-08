@@ -1,6 +1,6 @@
 // dependencies listed here
 const express = require('express');
-const path = require('path');
+//const logger = require('./middleware/logger'); // enable if you would like to log all calls
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+//app.use(logger); //enable if you would like to log all calls
 
 //routes
 require('./routes/api-routes.js')(app); 

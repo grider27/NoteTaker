@@ -2,6 +2,7 @@ const fs = require ('fs');
 var uniqid = require('uniqid'); // unique id generator
 var notesData = require('../db/db.json');
 
+
 module.exports = function(app){
 
     app.get('/api/notes', function (req, res) {
@@ -11,7 +12,7 @@ module.exports = function(app){
     // add new note
     app.post('/api/notes', function(req, res){
         let addNote = req.body;
-        console.log("new note:", addNote);
+        //console.log("new note:", addNote);
         notesData.push(addNote);
         addNote.id = uniqid();
 
