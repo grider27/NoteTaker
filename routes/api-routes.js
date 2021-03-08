@@ -1,5 +1,6 @@
-var notesData = require('../db/db.json');
 const fs = require ('fs');
+var uniqid = require('uniqid'); // unique id generator
+var notesData = require('../db/db.json');
 
 module.exports = function(app){
 
@@ -12,13 +13,23 @@ module.exports = function(app){
         let addNote = req.body;
         console.log("new note:", addNote);
         notesData.push(addNote);
+        addNote.id = uniqid();
 
         fs.writeFileSync("./db/db.json", JSON.stringify(notesData), "utf8", (err, data) => {
             if (err) throw err;
-            console.log("New note successfully added!");
         });
         res.json(true); 
-
 	});
+
+    //delete notes
+    app.delete("/api/notes/:id", function (req, res) {
+    let id = req.params.id;
+    notesData.splice(notesData.indexOf(id), 1);
+
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesData), "utf8", (err, data) => {
+        if (err) throw err;
+    });
+    res.json(true); 
+    });
 
 }
