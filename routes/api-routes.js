@@ -3,11 +3,12 @@ const fs = require ('fs');
 
 module.exports = function(app){
 
-    app.get("/api/notes", function (req, res) {
+    app.get('/api/notes', function (req, res) {
         return res.json(JSON.parse(fs.readFileSync("./db/db.json")));
     });
 
-    app.post('/api/tables', function(req, res){
+    // add new note
+    app.post('/api/notes', function(req, res){
         let addNote = req.body;
         console.log("new note:", addNote);
         notesData.push(addNote);
